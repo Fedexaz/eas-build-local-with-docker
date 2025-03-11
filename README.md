@@ -1,53 +1,33 @@
-## Ejecutar docker
-
-```bash
-npx expo start
-```
-
-## ABRIR HOST PARA APIS LOCAL
-
-```bash
-lt --port 8000 --subdomain simple-api
-
-lt --port 3000 --subdomain simple-socket-server
-```
-
-### Buildear imagen docker
+### Buil docker image
 
 ```bash
 docker build -t eas-build .
 ```
 
-### Ejecuta el contenedor
+### Exec container
 
 ```bash
 docker run --rm -it -v "$(pwd):/app" eas-build
+
 # DOCKER WITH LINUX OR IF YOU NEED LIMIT CONTAINER
 docker run --rm -it -v "$(pwd):/app" --memory=8g --memory-swap=16g --shm-size=2g eas-build
 ```
 
-### Dentro del contenedor
+### Inside container
 
-1. Instala las dependencias de tu proyecto:
-
-```bash
-yarn install
-eas build:configure
-```
-
-2. Compila el APK:
+1. Build APK:
 
 ```bash
 eas build --platform android --profile local --local
 ```
 
-3. Compila el AAB (Producción):
+2. Build AAB (Producción):
 
 ```bash
 eas build --platform android --profile production --local
 ```
 
-4. Compila el APK DEV MODE:
+3. Build APK DEV MODE:
 
 ```bash
 eas build --profile development --platform android --local
